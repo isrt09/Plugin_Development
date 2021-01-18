@@ -40,3 +40,19 @@ function wordcount_number($content){
 add_filter("the_content","wordcount_number");
 
 		/* updated by 18.01.2021 */
+
+function wordcount_readingtime($content){
+	$var      = strip_tags($content);
+	$count 	  = str_word_count($var);	
+	$minutes  = floor($count/200);
+	$seconds  = floor($count % 200/(200/60));
+	$visible  = apply_filters("wordcount_display_readingtime",1);
+	if($visible){
+		$label = __("Total Reading Time","word-count");
+		$label = apply_filters("wordcount_readingtime_heading",$label);
+		$tag   = apply_filters("wordcount_readingtime_tag",'h4');
+		$content .=sprintf("<%s>%s %s minutes %s seconds</%s>",$tag,$label,$minutes, $seconds, $tag);
+	}
+	return $content;
+}
+add_filter("the_content","wordcount_readingtime");
