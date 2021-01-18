@@ -1,0 +1,1 @@
+<h1 class="page">Welcome to All Pages</h1>

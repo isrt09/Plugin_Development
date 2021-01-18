@@ -1,0 +1,1 @@
+<h1 class="new">Welcome to Add New Section</h1>
